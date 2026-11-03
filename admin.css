@@ -1,0 +1,194 @@
+
+/* =================================
+   SACHI-MD-WEB ADMIN PANEL
+================================= */
+
+.admin-wrap {
+  width: min(950px, calc(100% - 28px));
+  margin: 42px auto 70px;
+}
+
+.admin-title {
+  font-size: clamp(34px, 7vw, 54px);
+  letter-spacing: -2px;
+}
+
+.admin-title span {
+  color: #c49bff;
+}
+
+.admin-card {
+  background: #171126;
+  border: 1px solid #c49bff35;
+  border-radius: 18px;
+  padding: 22px;
+  margin: 16px 0;
+  box-shadow: 0 10px 35px #00000020;
+}
+
+.admin-card h2 {
+  font-size: 21px;
+  margin: 0 0 16px;
+}
+
+.admin-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(230px, 1fr)
+  );
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+  margin: 13px 0;
+}
+
+.field label {
+  font-size: 13px;
+  color: #cdbbe4;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid #c49bff35;
+  background: #0d0916;
+  color: white;
+  font: inherit;
+  outline: none;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: #a879ec;
+  box-shadow: 0 0 0 2px #a879ec20;
+}
+
+.field textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.admin-btn {
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 18px;
+  background: linear-gradient(100deg, #7543c9, #a653c5);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 5px 5px 5px 0;
+}
+
+.admin-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.secondary {
+  background: #302340;
+}
+
+.danger {
+  background: #7a294e;
+}
+
+.muted {
+  color: #aaa0bc;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.status {
+  color: #d6b8ff;
+  font-size: 13px;
+  min-height: 20px;
+  overflow-wrap: anywhere;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid #8e69c8;
+  border-radius: 20px;
+  padding: 4px 9px;
+  font-size: 10px;
+  color: #d9c2ff;
+}
+
+.notice {
+  border-left: 3px solid #a879ec;
+  padding: 12px 14px;
+  background: #241936;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.api-item {
+  border: 1px solid #c49bff35;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 12px 0;
+  background: #100b1c;
+}
+
+.api-item h3 {
+  margin: 0 0 12px;
+  color: #decaff;
+}
+
+.api-item .field {
+  margin: 10px 0;
+}
+
+.api-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.api-enabled {
+  color: #70e6ae;
+}
+
+.api-disabled {
+  color: #e9a1b0;
+}
+
+@media (max-width: 600px) {
+  .admin-wrap {
+    margin-top: 25px;
+  }
+
+  .admin-card {
+    padding: 16px;
+  }
+
+  .admin-card h2 {
+    font-size: 18px;
+  }
+
+  .admin-btn {
+    padding: 12px 14px;
+  }
+}
