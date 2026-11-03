@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10091f">
+  <title>SACHINTHA | Personal Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glow glow-one"></div><div class="glow glow-two"></div>
+  <header class="nav wrap">
+    <a class="brand" href="#home">SACHI<span>.</span></a>
+    <nav>
+      <a href="#about">About</a><a href="#tools">Tools</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Connect <span>↗</span></a>
+    <a class="nav-cta" href="admin.html">Admin</a>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><i></i> PERSONAL SPACE · DIGITAL WORLD</div>
+        <h1>Hey, I'm<br><span>SACHINTHA.</span></h1>
+        <p class="lead">Welcome to my little corner of the internet. Find my links, connect with me, and explore useful social media tools.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Contact me <b>↗</b></a>
+          <a class="btn ghost" href="#tools">Explore tools <b>↓</b></a>
+        </div>
+        <div class="hero-note"><span class="pulse"></span> Thanks for visiting my website</div>
+      </div>
+      <div class="hero-art">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="profile-card">
+          <div class="profile-top"><span>✦ MY PROFILE</span><span class="dots">•••</span></div>
+          <div class="avatar">S</div>
+          <h2>SACHINTHA</h2>
+          <p>Creator · Tech Enthusiast</p>
+          <div class="profile-line"></div>
+          <div class="profile-stats"><div><b>01</b><small>PROFILE</small></div><div><b>03</b><small>TOOLS</small></div><div><b>∞</b><small>IDEAS</small></div></div>
+        </div>
+        <div class="float-tag tag-one">✦ Stay connected</div>
+        <div class="float-tag tag-two">⌘ Digital tools</div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="about">
+      <div class="section-heading"><div class="eyebrow">01 / ABOUT</div><h2>A little <span>about me.</span></h2></div>
+      <div class="about-card"><div class="about-icon">✧</div><div><h3>Welcome!</h3><p>I'm Sachintha. This website is where you can learn a little about me, find my social links, join my community, and access handy tools. Update this paragraph with your own bio whenever you're ready.</p></div></div>
+    </section>
+
+    <section class="section wrap" id="tools">
+      <div class="section-heading"><div class="eyebrow">02 / CREATOR TOOLS</div><h2>Useful <span>downloaders.</span></h2><p>Paste a public video link to continue. Only download content you own or have permission to save.</p></div>
+      <div class="tool-grid">
+        <article class="tool-card">
+          <div class="tool-icon facebook">f</div><div class="tool-label">SOCIAL TOOL 01</div><h3>Facebook Downloader</h3><p>Open a Facebook video link with your configured downloader service.</p>
+          <form class="download-form" data-service="facebook"><input type="url" placeholder="Paste Facebook video URL" aria-label="Facebook video URL" required><button type="submit">Continue <span>↗</span></button></form>
+          <small class="tool-status" aria-live="polite"></small>
+        </article>
+        <article class="tool-card">
+          <div class="tool-icon tiktok">♪</div><div class="tool-label">SOCIAL TOOL 02</div><h3>TikTok Downloader</h3><p>Use a public TikTok link with a downloader service you trust.</p>
+          <form class="download-form" data-service="tiktok"><input type="url" placeholder="Paste TikTok video URL" aria-label="TikTok video URL" required><button type="submit">Continue <span>↗</span></button></form>
+          <small class="tool-status" aria-live="polite"></small>
+        </article>
+        <article class="tool-card">
+          <div class="tool-icon instagram">◎</div><div class="tool-label">SOCIAL TOOL 03</div><h3>Instagram Downloader</h3><p>Continue with a public Instagram post or reel link.</p>
+          <form class="download-form" data-service="instagram"><input type="url" placeholder="Paste Instagram URL" aria-label="Instagram URL" required><button type="submit">Continue <span>↗</span></button></form>
+          <small class="tool-status" aria-live="polite"></small>
+        </article>
+      </div>
+      <div class="notice"><span>ⓘ</span><p><b>Downloader setup:</b> GitHub Pages hosts static websites only. To make downloads work, connect a secure backend/API in <code>script.js</code>. This starter page does not fetch or download videos by itself.</p></div>
+    </section>
+
+    <section class="section wrap" id="contact">
+      <div class="contact-panel">
+        <div><div class="eyebrow">03 / LET'S CONNECT</div><h2>Let's talk.<br><span>I'm one click away.</span></h2><p>Choose a link below to get in touch or join the community.</p></div>
+        <div class="contact-actions">
+          <a class="contact-link whatsapp" id="whatsapp-link" href="#" target="_blank" rel="noopener"> <span>◉</span> Message me on WhatsApp <b>↗</b></a>
+          <a class="contact-link" id="group-link" href="#" target="_blank" rel="noopener"><span>♧</span> Join WhatsApp Group <b>↗</b></a>
+          <div class="social-row">
+            <a id="instagram-link" href="#" target="_blank" rel="noopener">Instagram ↗</a>
+            <a id="tiktok-link" href="#" target="_blank" rel="noopener">TikTok ↗</a>
+            <a id="facebook-link" href="#" target="_blank" rel="noopener">Facebook ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap"><a class="brand" href="#home">SACHI<span>.</span></a><p>Made with care · © <span id="year"></span> SACHINTHA</p><a href="#home">Back to top ↑</a></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
