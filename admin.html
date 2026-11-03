@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10091f">
+<title>SACHI Admin Studio</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.admin-wrap{width:min(900px,calc(100% - 28px));margin:42px auto 70px}
+.admin-card{background:#171126;border:1px solid #c49bff35;border-radius:18px;padding:22px;margin:16px 0}
+.admin-card h2{font:700 22px 'Space Grotesk';margin:0 0 14px}
+.admin-card h3{font-size:15px;margin:20px 0 8px;color:#decaff}
+.field{display:grid;gap:7px;margin:12px 0}
+.field label{font-size:12px;color:#cdbbe4}
+.field input,.field textarea,.field select{width:100%;padding:12px;border-radius:9px;border:1px solid #c49bff35;background:#0d0916;color:#fff;font:14px 'DM Sans';box-sizing:border-box}
+.field textarea{min-height:78px;resize:vertical}
+.admin-btn{border:0;border-radius:9px;padding:12px 17px;background:linear-gradient(100deg,#7543c9,#a653c5);color:white;font-weight:700;cursor:pointer;margin:5px 5px 5px 0}
+.secondary{background:#302340}
+.danger{background:#7a294e}
+.muted{color:#aaa0bc;font-size:12px;line-height:1.6}
+.status{font-size:13px;color:#d6b8ff;min-height:20px}
+.hidden{display:none!important}
+.admin-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.api-item{border:1px solid #c49bff35;border-radius:12px;padding:13px;margin:10px 0;background:#100b1c}
+.api-item strong{display:block;margin-bottom:5px}
+.tag{display:inline-block;border:1px solid #8e69c8;border-radius:20px;padding:3px 8px;font-size:10px;color:#d9c2ff}
+.notice{border-left:3px solid #a879ec;padding:10px 13px;background:#241936;border-radius:8px}
+.topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="glow glow-one"></div>
+<header class="nav wrap">
+<a class="brand" href="index.html">SACHI<span>.</span></a>
+<a class="nav-cta" href="index.html">View website ↗</a>
+</header>
+
+<main class="admin-wrap">
+<div class="eyebrow">PRIVATE AREA · SACHI ADMIN STUDIO</div>
+<h1 style="font-size:clamp(34px,7vw,54px);letter-spacing:-2px">Control <span style="color:#c49bff">everything.</span></h1>
+<p class="muted">Manage public profile details, links, sections and downloader service connections. Sign in with your Supabase admin account.</p>
+
+<section class="admin-card" id="login-card">
+<h2>Admin Login</h2>
+<div class="field"><label>Admin email</label><input id="email" type="email" autocomplete="username" placeholder="Admin email"></div>
+<div class="field"><label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Admin password"></div>
+<button class="admin-btn" id="login">Sign in</button>
+<p class="status" id="login-status" aria-live="polite"></p>
+</section>
+
+<section class="hidden" id="panel">
+<section class="admin-card">
+<div class="admin-head">
+<div><span class="tag">ADMIN SESSION ACTIVE</span><h2 style="margin-top:10px">Website overview</h2></div>
+<button class="admin-btn secondary" id="logout">Log out</button>
+</div>
+<p class="muted">Save changes to publish them to the public site. Refresh the homepage after saving.</p>
+</section>
+
+<section class="admin-card">
+<h2>01 · Profile & appearance</h2>
+<div class="admin-grid">
+<div class="field"><label>Website / display name</label><input data-key="siteName" placeholder="SACHINTHA"></div>
+<div class="field"><label>Profile title</label><input data-key="profileTitle" placeholder="Creator · Tech Enthusiast"></div>
+</div>
+<div class="field"><label>Short introduction</label><textarea data-key="bio"></textarea></div>
+<div class="field"><label>Profile image URL (optional, public image only)</label><input data-key="profileImage" type="url" placeholder="https://..."></div>
+<div class="field"><label>Hero welcome text</label><textarea data-key="welcomeText" placeholder="Welcome to my corner of the internet."></textarea></div>
+</section>
+
+<section class="admin-card">
+<h2>02 · WhatsApp & social links</h2>
+<div class="admin-grid">
+<div class="field"><label>WhatsApp number (country code + digits)</label><input data-key="whatsappNumber"></div>
+<div class="field"><label>WhatsApp pre-filled message</label><input data-key="whatsappMessage"></div>
+</div>
+<div class="field"><label>WhatsApp group invite URL</label><input data-key="whatsappGroup" type="url"></div>
+<div class="admin-grid">
+<div class="field"><label>Instagram URL</label><input data-key="instagram" type="url"></div>
+<div class="field"><label>TikTok URL</label><input data-key="tiktok" type="url"></div>
+<div class="field"><label>Facebook URL</label><input data-key="facebook" type="url"></div>
+</div>
+</section>
+
+<section class="admin-card">
+<h2>03 · Website sections</h2>
+<p class="muted">Turn public sections on or off without editing website code.</p>
+<div class="admin-grid">
+<div class="field"><label>About section</label><select data-key="showAbout"><option value="true">Visible</option><option value="false">Hidden</option></select></div>
+<div class="field"><label>Tools / downloaders section</label><select data-key="showTools"><option value="true">Visible</option><option value="false">Hidden</option></select></div>
+<div class="field"><label>Contact section</label><select data-key="showContact"><option value="true">Visible</option><option value="false">Hidden</option></select></div>
+</div>
+</section>
+
+<section class="admin-card">
+<h2>04 · Downloader connections</h2>
+<p class="notice muted">These are backend endpoint URLs only. The Facebook, TikTok and Instagram downloader cards remain available, but downloads activate only after a compatible provider API and server-side adapter are configured. Never paste API secrets or provider tokens here.</p>
+<div class="field"><label>Facebook downloader backend URL</label><input data-key="facebookDownloader" type="url" placeholder="https://your-backend.example/fb"></div>
+<div class="field"><label>TikTok downloader backend URL</label><input data-key="tiktokDownloader" type="url" placeholder="https://your-backend.example/tiktok"></div>
+<div class="field"><label>Instagram downloader backend URL</label><input data-key="instagramDownloader" type="url" placeholder="https://your-backend.example/instagram"></div>
+</section>
+
+<section class="admin-card">
+<div class="topline"><h2>05 · API directory</h2><button class="admin-btn secondary" id="add-api">+ Add API</button></div>
+<p class="muted">Save API provider names, base URLs and documentation links here for later setup. This directory does not activate a provider by itself. API keys must be stored as Supabase Edge Function secrets, never in this page or the public database.</p>
+<div id="api-list"></div>
+<p class="muted">API credentials must stay in a server-side secret store / Supabase Edge Function, never in this browser panel or GitHub Pages files.</p>
+</section>
+
+<section class="admin-card">
+<div class="topline"><h2>06 · Backend control</h2><button class="admin-btn secondary" id="check-backend">Check backend status</button></div>
+<p class="muted">This checks the protected Supabase Edge Function. Deploy the included function once before expecting an online result.</p>
+<div class="notice muted" id="backend-status" aria-live="polite">Backend status has not been checked.</div>
+<p class="muted">Downloader providers are not connected by this status check. Add only trusted provider endpoints in the downloader settings, and keep API credentials in server-side Supabase Function secrets.</p>
+</section>
+
+<section class="admin-card">
+<h2>07 · Save & publish settings</h2>
+<button class="admin-btn" id="save">Save all website settings</button>
+<button class="admin-btn secondary" id="reload">Reload saved settings</button>
+<p class="status" id="save-status" aria-live="polite"></p>
+</section>
+</section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const db=window.supabase.createClient(window.SACHI_SUPABASE_URL,window.SACHI_SUPABASE_KEY);
+const $=id=>document.getElementById(id);
+const fields=[...document.querySelectorAll('[data-key]')];
+let apiItems=[];
+
+const defaults={
+siteName:'SACHINTHA',
+profileTitle:'Creator · Tech Enthusiast',
+bio:'',
+profileImage:'',
+welcomeText:'',
+whatsappNumber:'94778936490',
+whatsappMessage:'Hi Sachintha! I found your website.',
+whatsappGroup:'https://chat.whatsapp.com/KHLoN4Chzag2YPvehbmjm8',
+instagram:'https://www.instagram.com/sachintha5275?stkn=MWtkb3FrZTF1OTI1Zw==',
+tiktok:'https://www.tiktok.com/@sachinthagayan915?_r=1&_t=ZS-9AKvMaQj8Y1',
+facebook:'https://www.facebook.com/share/1KR7Xbrjcn/',
+facebookDownloader:'',
+tiktokDownloader:'',
+instagramDownloader:'',
+showAbout:'true',
+showTools:'true',
+showContact:'true'
+};
+
+async function isAdmin(user){
+const {data,error}=await db.from('admin_users')
+.select('user_id').eq('user_id',user.id).maybeSingle();
+return !error&&!!data;
+}
+
+function renderApis(){
+const host=$('api-list');
+host.innerHTML='';
+if(!apiItems.length){
+host.innerHTML='<p class="muted">No API directory entries yet.</p>';
+return;
+}
+apiItems.forEach((item,i)=>{
+const el=document.createElement('div');
+el.className='api-item';
+el.innerHTML=`
+<div class="field"><label>API name</label><input data-api="name"></div>
+<div class="field"><label>Base URL</label><input data-api="baseUrl"></div>
+<div class="field"><label>Documentation URL</label><input data-api="docsUrl"></div>
+<button class="admin-btn danger" type="button">Delete API</button>`;
+el.querySelectorAll('[data-api]').forEach(input=>{
+input.value=item[input.dataset.api]||'';
+});
+el.querySelector('button').onclick=()=>{
+apiItems.splice(i,1);
+renderApis();
+};
+el.querySelectorAll('[data-api]').forEach(input=>{
+input.oninput=()=>{item[input.dataset.api]=input.value;};
+});
+host.appendChild(el);
+});
+}
+
+async function loadSettings(){
+$('save-status').textContent='Loading…';
+const {data,error}=await db.from('site_settings').select('key,value');
+if(error){$('save-status').textContent=error.message;return;}
+const map={...defaults};
+(data||[]).forEach(row=>map[row.key]=row.value);
+fields.forEach(f=>f.value=map[f.dataset.key]??'');
+apiItems=Array.isArray(map.apiDirectory)?map.apiDirectory:[];
+renderApis();
+$('save-status').textContent='Settings loaded.';
+}
+
+async function showPanel(user){
+if(!await isAdmin(user)){
+await db.auth.signOut();
+$('login-status').textContent='This account is not listed as an admin.';
+return;
+}
+$('login-card').classList.add('hidden');
+$('panel').classList.remove('hidden');
+await loadSettings();
+}
+
+$('login').onclick=async()=>{
+$('login-status').textContent='Signing in…';
+const {data,error}=await db.auth.signInWithPassword({
+email:$('email').value,
+password:$('password').value
+});
+if(error){$('login-status').textContent=error.message;return;}
+await showPanel(data.user);
+};
+
+$('add-api').onclick=()=>{
+apiItems.push({name:'',baseUrl:'',docsUrl:''});
+renderApis();
+};
+
+$('save').onclick=async()=>{
+$('save-status').textContent='Saving…';
+const rows=fields.map(f=>({key:f.dataset.key,value:f.value}));
+rows.push({key:'apiDirectory',value:apiItems});
+const {error}=await db.from('site_settings')
+.upsert(rows,{onConflict:'key'});
+$('save-status').textContent=error
+?error.message
+:'Saved successfully. Refresh the public website to see changes.';
+};
+
+$('check-backend').onclick=async()=>{
+const out=$('backend-status');
+out.textContent='Checking secure backend…';
+const {data,error}=await db.functions.invoke('super-action',{
+body:{action:'status'}
+});
+if(error){
+out.textContent='Backend not reachable yet: '+error.message+' — deploy supabase/functions/super-action first.';
+return;
+}
+out.textContent=data?.status==='ok'
+?'Backend online · Admin authorization verified.'
+:'Backend replied, but status was unexpected.';
+};
+
+$('reload').onclick=loadSettings;
+
+$('logout').onclick=async()=>{
+await db.auth.signOut();
+$('panel').classList.add('hidden');
+$('login-card').classList.remove('hidden');
+};
+
+db.auth.getSession().then(async({data})=>{
+if(data.session)await showPanel(data.session.user);
+});
+</script>
+</body>
+</html>
